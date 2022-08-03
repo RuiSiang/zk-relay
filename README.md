@@ -19,9 +19,9 @@ npx ts-node client-example
 `app.js` is the code for the relay server
 `client-example.ts` is an example for writing a client that can connect to the relay server
 
-## Methods
+## Events
 
-| Method    | Description                                                                                 | Type          |
+| Event     | Description                                                                                 | Type          |
 | --------- | ------------------------------------------------------------------------------------------- | ------------- |
 | subscribe | subscribe to the respective channel for different banks in order to listen for relay events | client->relay |
 | transmit  | transmit payload for relaying                                                               | client->relay |
