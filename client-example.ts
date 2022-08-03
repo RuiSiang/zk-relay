@@ -33,7 +33,7 @@ export default class Client {
   }
   public subscribe = (bank: string) => {
     if (this.bank) {
-      throw new Error('You canb only subscribe to one bank')
+      throw new Error('You can only subscribe to one bank')
     }
     this.socket.emit('subscribe', { bank: 'Bank A' })
     this.bank = bank
