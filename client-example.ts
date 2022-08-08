@@ -5,10 +5,10 @@ export default class Client {
   private static instance: Client
   private bank: string = ''
 
-  public static get getInstance() {
+  public static getInstance(url: string) {
     if (!Client.instance) {
       try {
-        Client.instance = new Client()
+        Client.instance = new Client(url)
       } catch (err) {
         console.log('Socket init error')
       }
@@ -16,8 +16,8 @@ export default class Client {
     return Client.instance
   }
 
-  constructor() {
-    this.socket = io('http://localhost:3000', {
+  constructor(url: string) {
+    this.socket = io(url, {
       reconnectionDelayMax: 10000,
     })
     this.socket.on('connect', () => {
@@ -48,6 +48,6 @@ export default class Client {
   }
 }
 
-const client = Client.getInstance
+const client = Client.getInstance('http://127.0.0.1:6000')
 client.subscribe('Bank A')
 client.transmit('Bank B', '0x01')
