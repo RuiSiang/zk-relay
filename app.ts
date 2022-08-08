@@ -27,4 +27,4 @@ server.on('connection', async (client) => {
   })
 })
 
-httpServer.listen(parseInt('6000' || process.env.PORT))
+httpServer.listen(parseInt(process.env.PORT || '6000'))
