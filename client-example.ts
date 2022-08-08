@@ -35,7 +35,7 @@ export default class Client {
     if (this.bank) {
       throw new Error('You can only subscribe to one bank')
     }
-    this.socket.emit('subscribe', { bank: 'Bank A' })
+    this.socket.emit('subscribe', { bank })
     this.bank = bank
     console.log(`Subscribed to bank ${bank}`)
   }
@@ -48,6 +48,6 @@ export default class Client {
   }
 }
 
-const client = Client.getInstance('http://127.0.0.1:6000')
+const client = Client.getInstance('http://localhost:6000')
 client.subscribe('Bank A')
 client.transmit('Bank B', '0x01')
