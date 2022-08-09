@@ -23,7 +23,7 @@ server.on('connection', async (client) => {
     }
   )
   server.on('disconnect', () => {
-    console.log(`Client ${client.id} connected`)
+    console.log(`Client ${client.id} disconnected`)
   })
 })
 

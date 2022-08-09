@@ -39,15 +39,21 @@ export default class Client {
     this.bank = bank
     console.log(`Subscribed to bank ${bank}`)
   }
-  public transmit = (to: string, proof: string) => {
+  public transmit = (id: string, to: string, amount: string, proof: string) => {
     if (!this.bank) {
       throw new Error('You must subscribe to a bank first')
     }
-    this.socket.emit('transmit', { from: this.bank, to, proof })
+    this.socket.emit('transmit', {
+      id,
+      from: this.bank,
+      to,
+      amount,
+      proof,
+    })
     console.log(`Payload transmitted to ${to}`)
   }
 }
 
 const client = Client.getInstance('http://localhost:6000')
 client.subscribe('Bank A')
-client.transmit('Bank B', '0x01')
+client.transmit('0001', 'Bank B', '100', '0x01')
