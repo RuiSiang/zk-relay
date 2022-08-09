@@ -14,10 +14,14 @@ server.on('connection', async (client) => {
   })
   client.on(
     'transmit',
-    async (payload: { from: string; to: string; proof: string }) => {
-      console.log(
-        `AML data transmitted from ${payload.from} by ${client.id}`
-      )
+    async (payload: {
+      id: string
+      from: string
+      to: string
+      amount: string
+      proof: string
+    }) => {
+      console.log(`AML data transmitted from ${payload.from} by ${client.id}`)
       console.log(`AML data relayed to ${payload.to} by ${client.id}`)
       server.to(payload.to).emit('relay', payload)
     }
