@@ -5,7 +5,7 @@ RUN npm install
 RUN npm run build
 
 FROM node:16-alpine
-WORKDIR /usr/src/pow-shield
+WORKDIR /usr/src/zk-relay
 COPY --from=BUILD_IMAGE /build/dist .
 COPY --from=BUILD_IMAGE /build/node_modules ./node_modules
 CMD [ "node", "app.js" ]
