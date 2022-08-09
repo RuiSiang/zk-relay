@@ -8,6 +8,12 @@ npm run build
 npm run start
 ```
 
+## Deploy from docker image
+
+```
+docker run -p 6000:6000 ruisiang/zk-relay
+```
+
 ## Client Example
 
 ```
